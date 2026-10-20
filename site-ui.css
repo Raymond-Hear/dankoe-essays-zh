@@ -357,6 +357,11 @@ html { scroll-padding-top: calc(var(--header-height) + 24px); }
 .about-head > p.about-stats { margin: 16px 0 0; color: var(--muted); font: 12px/1.6 var(--ui); letter-spacing: .08em; }
 .about-head > p.about-stats:empty { display: none; }
 
+.update-note { display: flex; align-items: baseline; gap: 12px; margin: 18px 0 2px; padding: 12px 15px; border-left: 2px solid var(--accent); background: var(--badge-bg); color: var(--muted); font: 13px/1.7 var(--ui); }
+.update-note strong { flex: none; color: var(--ink); font-weight: 700; }
+.featured-label { display: inline-block; color: var(--accent); font-weight: 700; white-space: nowrap; }
+@media (max-width: 650px) { .update-note { align-items: flex-start; flex-direction: column; gap: 2px; } }
+
 /* Inline QR mention inside body copy */
 .qr-mention {
   position: relative;

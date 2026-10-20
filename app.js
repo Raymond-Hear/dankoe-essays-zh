@@ -37,7 +37,7 @@ function sourceRow(label, url, text) {
     '</a></dd></div>';
 }
 
-function initHome(catalog, contentIndex, editorial) {
+function initHome(catalog, contentIndex, editorial, featured) {
   const published = new Set(contentIndex.published || []);
   const articles = catalog.articles.filter((article) => published.has(article.id));
   const count = $("#articleCount");
@@ -47,10 +47,12 @@ function initHome(catalog, contentIndex, editorial) {
   const yearSelect = $("#yearFilter");
   const sortSelect = $("#sortOrder");
   let selectedTopic = "";
+  let featuredOnly = false;
 
   const topics = [...new Set(articles.flatMap((article) => article.topics || []))];
   const years = [...new Set(articles.map((article) => (article.date || "").slice(0, 4)).filter(Boolean))].sort().reverse();
   tagBar.innerHTML = ['<button type="button" data-topic="" aria-pressed="true">全部</button>',
+    ...(articles.some((article) => featured[article.id]) ? ['<button type="button" data-featured="true" aria-pressed="false">重点推荐</button>'] : []),
     ...topics.map((topic) => '<button type="button" data-topic="' + escapeHtml(topic) + '" aria-pressed="false">' + escapeHtml(topic) + '</button>')].join("");
   yearSelect.innerHTML = '<option value="">全部年份</option>' + years.map((year) => '<option value="' + escapeHtml(year) + '">' + escapeHtml(year) + ' 年</option>').join("");
 
@@ -59,6 +61,7 @@ function initHome(catalog, contentIndex, editorial) {
     const matches = articles.filter((article) => {
       const searchable = [article.title, article.zhTitle || "", editorial[article.id]?.summary || "", ...(article.topics || [])].join(" ").toLocaleLowerCase();
       return terms.every((term) => searchable.includes(term))
+        && (!featuredOnly || Boolean(featured[article.id]))
         && (!selectedTopic || (article.topics || []).includes(selectedTopic))
         && (!yearSelect.value || (article.date || "").startsWith(yearSelect.value));
     }).sort((a, b) => sortSelect.value === "oldest" ? a.date.localeCompare(b.date) : b.date.localeCompare(a.date));
@@ -68,7 +71,8 @@ function initHome(catalog, contentIndex, editorial) {
       '<a class="card-cover" href="' + articleUrl(article) + ((contentIndex.media || {})[article.id]?.videoId ? '#listen' : '') +
       '" aria-label="' + escapeHtml((contentIndex.media || {})[article.id]?.videoId ? '查看视频：' : '阅读：') + escapeHtml(article.zhTitle || article.title) + '">' +
       '<img src="' + coverUrl(article) + '" alt="" loading="lazy" width="1200" height="675"></a>' +
-      '<div class="card-copy"><div class="card-meta"><time datetime="' + escapeHtml(article.date || "") + '">' + escapeHtml(article.date || "") + '</time></div>' +
+      '<div class="card-copy"><div class="card-meta"><time datetime="' + escapeHtml(article.date || "") + '">' + escapeHtml(article.date || "") + '</time>' +
+      (featured[article.id] ? '<span class="featured-label">★ 重点推荐</span>' : '') + '</div>' +
       '<h3><a href="' + articleUrl(article) + '">' + escapeHtml(article.zhTitle || article.title) + '</a></h3>' +
       '<p class="card-summary">' + escapeHtml(editorial[article.id]?.summary || "") + '</p>' +
       '<div class="card-bottom"><div class="card-topics">' + (article.topics || []).map((topic) => '<span>' + escapeHtml(topic) + '</span>').join("") +
@@ -79,9 +83,10 @@ function initHome(catalog, contentIndex, editorial) {
   yearSelect.addEventListener("change", render);
   sortSelect.addEventListener("change", render);
   tagBar.addEventListener("click", (event) => {
-    const button = event.target.closest("button[data-topic]");
+    const button = event.target.closest("button[data-topic], button[data-featured]");
     if (!button) return;
-    selectedTopic = button.dataset.topic;
+    featuredOnly = button.dataset.featured === "true";
+    selectedTopic = featuredOnly ? "" : button.dataset.topic;
     tagBar.querySelectorAll("button").forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
     render();
   });
@@ -96,7 +101,8 @@ function renderMedia(article) {
   let videoButton = null;
   const videoSrc = (seconds = 0) => {
     const url = new URL("https://www.youtube-nocookie.com/embed/" + encodeURIComponent(article.videoId));
-    url.searchParams.set("autoplay", "1");
+    // 不要加 autoplay=1：YouTube 会把「无需交互自动播放」判定为自动化流量，
+    // 直接返回「Sign in to confirm you're not a bot」。播放键交给播放器本身。
     if (seconds) url.searchParams.set("start", String(seconds));
     return url.toString();
   };
@@ -204,7 +210,7 @@ function renderMedia(article) {
   }
 }
 
-async function initArticle(catalog, contentIndex, editorial) {
+async function initArticle(catalog, contentIndex, editorial, featured) {
   const params = new URLSearchParams(location.search);
   const id = params.get("id");
   const published = new Set(contentIndex.published || []);
@@ -238,7 +244,8 @@ async function initArticle(catalog, contentIndex, editorial) {
   if (media.chapterSourceUrl) sources.push(sourceRow("章节时间", media.chapterSourceUrl, "播客章节来源"));
   document.title = (article.zhTitle || article.title) + " · Dan Koe 中文阅读";
   $("#readerContent").innerHTML =
-    '<article class="reader-grid"><header class="article-head"><p class="eyebrow">DAN KOE · ' + escapeHtml(article.date || "") + '</p>' +
+    '<article class="reader-grid"><header class="article-head"><p class="eyebrow">DAN KOE · ' + escapeHtml(article.date || "") +
+    (featured[id] ? ' · ★ 重点推荐' : '') + '</p>' +
     '<img class="article-head-cover" src="' + coverUrl(article) + '" alt="Dan Koe 原文封面" width="1200" height="675">' +
     '<h1>' + escapeHtml(article.zhTitle || article.title) + '</h1>' +
     '<p class="original-title" lang="en">' + escapeHtml(article.title) + '</p>' +
@@ -297,11 +304,11 @@ async function initArticle(catalog, contentIndex, editorial) {
 
 async function boot() {
   try {
-    const [catalog, contentIndex, editorial] = await Promise.all([
-      loadJson("data/catalog.json"), loadJson("content/index.json"), loadJson("data/editorial.json"),
+    const [catalog, contentIndex, editorial, featured] = await Promise.all([
+      loadJson("data/catalog.json"), loadJson("content/index.json"), loadJson("data/editorial.json"), loadJson("data/featured.json"),
     ]);
-    if (document.body.dataset.page === "home") initHome(catalog, contentIndex, editorial);
-    else await initArticle(catalog, contentIndex, editorial);
+    if (document.body.dataset.page === "home") initHome(catalog, contentIndex, editorial, featured);
+    else await initArticle(catalog, contentIndex, editorial, featured);
   } catch (error) {
     const target = document.body.dataset.page === "home" ? $("#articleList") : $("#readerContent");
     target.innerHTML = '<p class="empty-state">正文暂时无法读取，请稍后再试。</p>';
