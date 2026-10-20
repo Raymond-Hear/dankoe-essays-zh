@@ -82,6 +82,21 @@ html { scroll-padding-top: calc(var(--header-height) + 24px); }
 }
 .theme-switch:hover { border-color: var(--accent); background: var(--hover); }
 .theme-symbol { font: 19px/1 Georgia, serif; width: 18px; text-align: center; }
+.header-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  min-height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color .18s ease, background-color .18s ease, color .18s ease;
+}
+.header-icon svg { display: block; width: 17px; height: 17px; }
+.header-icon:hover { border-color: var(--accent); background: var(--hover); color: var(--accent); }
+.header-icon:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .skip-link {
   position: fixed;
   left: 12px;
