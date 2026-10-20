@@ -527,11 +527,109 @@
       "access": "public",
       "zhTitle": "20 到 30 岁是人生教程阶段，别浪费它",
       "hasGuide": false
+    },
+    {
+      "id": "9febf9c741f7",
+      "title": "The Death Of Thoughtful Creation (& How To Get Ahead Of Everyone Else)",
+      "url": "https://thedankoe.com/letters/the-death-of-thoughtful-creation-how-to-get-ahead-of-everyone-else/",
+      "date": "2025-06-19",
+      "source": "官网文章",
+      "topics": [
+        "一人公司",
+        "写作与内容"
+      ],
+      "access": "public",
+      "zhTitle": "深度创作的衰落，以及如何领先一步",
+      "hasGuide": false
+    },
+    {
+      "id": "7949a44e439f",
+      "title": "if you want to be happy, be a loser",
+      "url": "https://letters.thedankoe.com/p/be-a-loser-if-you-want-to-be-happy",
+      "date": "2025-06-12",
+      "source": "邮件文章",
+      "topics": [
+        "学习与思考"
+      ],
+      "access": "public",
+      "sourceDescription": "why fitting in will make you unsuccessful",
+      "zhTitle": "如果你想快乐，试着接受当个“失败者”",
+      "hasGuide": false
+    },
+    {
+      "id": "b06e20ac80d1",
+      "title": "How To Be More Disagreeable (Create A Reality Distortion Field)",
+      "url": "https://thedankoe.com/letters/how-to-be-more-disagreeable-create-a-reality-distortion-field/",
+      "date": "2025-06-09",
+      "source": "官网文章",
+      "topics": [
+        "一人公司",
+        "写作与内容"
+      ],
+      "access": "public",
+      "zhTitle": "如何更敢于表达不同意见",
+      "hasGuide": false
+    },
+    {
+      "id": "1ec2583f9fcf",
+      "title": "you weren't born to be an NPC",
+      "url": "https://letters.thedankoe.com/p/main-character-energy-mce",
+      "date": "2025-06-02",
+      "source": "邮件文章",
+      "topics": [
+        "学习与思考"
+      ],
+      "access": "public",
+      "sourceDescription": "how to become the main character of your life",
+      "zhTitle": "你生来不是为了做游戏里的 NPC",
+      "hasGuide": false
+    },
+    {
+      "id": "697e841a0dc1",
+      "title": "How To Build A Better Personal Brand Than 99% Of People",
+      "url": "https://thedankoe.com/letters/how-to-build-a-better-personal-brand-than-99-of-people/",
+      "date": "2025-05-29",
+      "source": "官网文章",
+      "topics": [
+        "一人公司",
+        "写作与内容",
+        "生活设计"
+      ],
+      "access": "public",
+      "zhTitle": "如何建立比大多数人更好的个人品牌",
+      "hasGuide": false
+    },
+    {
+      "id": "49ffbf4f19b4",
+      "title": "Learn AI To 10x Any Other Skill (Full Beginner Guide)",
+      "url": "https://thedankoe.com/letters/learn-ai-to-10x-any-other-skill-full-beginner-guide/",
+      "date": "2025-03-15",
+      "source": "官网文章",
+      "topics": [
+        "学习与思考"
+      ],
+      "access": "public",
+      "zhTitle": "AI 入门指南：用它放大其他技能",
+      "hasGuide": false
+    },
+    {
+      "id": "91ef9912c1bd",
+      "title": "How To Achieve Big Goals So Fast It Feels Like Cheating",
+      "url": "https://thedankoe.com/letters/why-you-fail-at-almost-everything-you-do/",
+      "date": "2025-03-08",
+      "source": "官网文章",
+      "topics": [
+        "专注与行动",
+        "生活设计"
+      ],
+      "access": "public",
+      "zhTitle": "如何更快实现远大的目标",
+      "hasGuide": false
     }
   ],
   "stats": {
     "publicTotal": 242,
-    "translated": 36,
+    "translated": 43,
     "since": "2021"
   }
 }

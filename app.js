@@ -100,9 +100,15 @@ function renderMedia(article) {
   let audioToggle = null;
   let videoButton = null;
   const videoSrc = (seconds = 0) => {
-    const url = new URL("https://www.youtube-nocookie.com/embed/" + encodeURIComponent(article.videoId));
-    // 不要加 autoplay=1：YouTube 会把「无需交互自动播放」判定为自动化流量，
-    // 直接返回「Sign in to confirm you're not a bot」。播放键交给播放器本身。
+    // 用 www.youtube.com 而不是 youtube-nocookie.com，并且带上 origin：
+    // 浏览器已登录 YouTube 时，nocookie 域内拿不到会话 Cookie，YouTube 无法确认身份，
+    // 点播放就返回「Sign in to confirm you're not a bot」。换成 www.youtube.com + origin 才认得出人。
+    // iframe 只在点击封面后创建，属于真实用户手势，autoplay 是合法的。
+    const url = new URL("https://www.youtube.com/embed/" + encodeURIComponent(article.videoId));
+    url.searchParams.set("rel", "0");
+    url.searchParams.set("playsinline", "1");
+    url.searchParams.set("autoplay", "1");
+    if (location.origin && location.origin !== "null") url.searchParams.set("origin", location.origin);
     if (seconds) url.searchParams.set("start", String(seconds));
     return url.toString();
   };
@@ -112,8 +118,18 @@ function renderMedia(article) {
     frame.src = videoSrc(seconds);
     frame.title = article.title + " · 视频";
     frame.allow = "autoplay; encrypted-media; picture-in-picture";
+    frame.referrerPolicy = "strict-origin-when-cross-origin";
     frame.allowFullscreen = true;
     target.querySelector(".video-cover, .video-frame")?.replaceWith(frame);
+    if (!target.querySelector(".video-fallback")) {
+      const fallback = document.createElement("a");
+      fallback.className = "video-fallback";
+      fallback.href = "https://www.youtube.com/watch?v=" + encodeURIComponent(article.videoId);
+      fallback.target = "_blank";
+      fallback.rel = "noopener noreferrer";
+      fallback.textContent = "播放器打不开？到 YouTube 上看";
+      frame.after(fallback);
+    }
     audio?.pause();
   }
   function showNativeAudio() {
