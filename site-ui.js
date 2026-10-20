@@ -36,13 +36,29 @@
       });
     });
 
+    const statsSlots = document.querySelectorAll("[data-site-stats]");
+    if (statsSlots.length) {
+      fetch("data/catalog.json")
+        .then((response) => (response.ok ? response.json() : null))
+        .then((catalog) => {
+          const stats = catalog && catalog.stats;
+          if (!stats) return;
+          const text = [
+            stats.publicTotal ? stats.publicTotal + " 篇公开长文" : "",
+            stats.translated ? stats.translated + " 篇中文精读" : "",
+            stats.since ? stats.since + " 年至今" : "",
+          ].filter(Boolean).join(" · ");
+          statsSlots.forEach((slot) => { slot.textContent = text; });
+        })
+        .catch(() => {});
+    }
+
     const topButton = document.querySelector("[data-back-to-top]");
     const dock = document.querySelector("[data-contact-dock]");
     const card = document.querySelector("[data-contact-card]");
     const triggers = document.querySelectorAll("[data-contact-toggle]");
 
-    if (dock && card) {
-      let closeTimer = 0;
+    if (dock && card) {      let closeTimer = 0;
       const hoverable = window.matchMedia("(hover: hover)");
       const apply = (open) => {
         dock.classList.toggle("is-open", open);

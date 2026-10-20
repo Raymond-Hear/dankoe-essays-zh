@@ -259,5 +259,10 @@
       "zhTitle": "你大约还有 36 个月的窗口期",
       "hasGuide": false
     }
-  ]
+  ],
+  "stats": {
+    "publicTotal": 242,
+    "translated": 17,
+    "since": "2021"
+  }
 }

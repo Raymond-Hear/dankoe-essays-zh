@@ -335,8 +335,12 @@ html { scroll-padding-top: calc(var(--header-height) + 24px); }
   .about-links li { grid-template-columns: 84px minmax(0, 1fr); gap: 10px; }
 }
 
-/* Contact dock: hover the floating button to reveal the WeChat QR code */
-.contact-dock {
+.intro > p.intro-stats { margin: 18px 0 0; color: var(--accent); font: 12px/1.6 var(--ui); letter-spacing: .08em; }
+.intro > p.intro-stats:empty { display: none; }
+.about-head > p.about-stats { margin: 16px 0 0; color: var(--muted); font: 12px/1.6 var(--ui); letter-spacing: .08em; }
+.about-head > p.about-stats:empty { display: none; }
+
+/* Contact dock: hover the floating button to reveal the WeChat QR code */.contact-dock {
   position: fixed;
   right: max(22px, env(safe-area-inset-right));
   bottom: calc(max(22px, env(safe-area-inset-bottom)) + 55px);
