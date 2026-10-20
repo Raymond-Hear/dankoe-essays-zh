@@ -1,0 +1,263 @@
+{
+  "generatedAt": "2026-10-19T10:20:08+00:00",
+  "sources": [
+    {
+      "name": "Dan Koe 官网文章目录",
+      "url": "https://thedankoe.com/letters/"
+    },
+    {
+      "name": "Dan Koe 邮件文章公开目录",
+      "url": "https://letters.thedankoe.com/archive"
+    }
+  ],
+  "topics": [
+    "一人公司",
+    "写作与内容",
+    "专注与行动",
+    "学习与思考",
+    "生活设计"
+  ],
+  "articles": [
+    {
+      "id": "62e06a0cb614",
+      "title": "Full Course: How To Turn Your Interests Into Profitable a Lifestyle Business",
+      "url": "https://letters.thedankoe.com/p/full-course-how-to-turn-your-interests",
+      "date": "2026-10-05",
+      "source": "邮件文章",
+      "topics": [
+        "一人公司",
+        "生活设计"
+      ],
+      "access": "public",
+      "sourceDescription": "A guide to turning your interests into work you enjoy doing (and get paid well for)",
+      "zhTitle": "完整教程：把兴趣变成可盈利的生活方式事业",
+      "hasGuide": false
+    },
+    {
+      "id": "fcf5ecd4bc4b",
+      "title": "How to launch into a completely new life",
+      "url": "https://letters.thedankoe.com/p/how-to-launch-into-a-completely-new-ef8",
+      "date": "2026-09-19",
+      "source": "邮件文章",
+      "topics": [
+        "生活设计"
+      ],
+      "access": "public",
+      "sourceDescription": "Make it so easy to succeed you’d look stupid if you fail",
+      "zhTitle": "如何开启一段全新的生活",
+      "hasGuide": false
+    },
+    {
+      "id": "9f12a23d9251",
+      "title": "You need to be delusional if you want to succeed",
+      "url": "https://letters.thedankoe.com/p/you-need-to-be-delusional-if-you",
+      "date": "2026-09-12",
+      "source": "邮件文章",
+      "topics": [
+        "学习与思考"
+      ],
+      "access": "public",
+      "sourceDescription": "How to enter the same reality as ultra successful people",
+      "zhTitle": "想要成功，你需要一点“不切实际”",
+      "hasGuide": false
+    },
+    {
+      "id": "2fd39bf36809",
+      "title": "The One-Human Business: How To Earn In The Age of AI",
+      "url": "https://letters.thedankoe.com/p/the-one-human-business-how-to-earn",
+      "date": "2026-09-06",
+      "source": "邮件文章",
+      "topics": [
+        "一人公司",
+        "学习与思考"
+      ],
+      "access": "public",
+      "sourceDescription": "Your interests + social media + AI = modern business",
+      "zhTitle": "一个人的生意：在 AI 时代如何创造收入",
+      "hasGuide": true
+    },
+    {
+      "id": "d90ffe8534ce",
+      "title": "We are in the middle of the digital renaissance, please take advantage of it",
+      "url": "https://letters.thedankoe.com/p/we-are-in-the-middle-of-the-digital",
+      "date": "2026-08-27",
+      "source": "邮件文章",
+      "topics": [
+        "学习与思考"
+      ],
+      "access": "public",
+      "sourceDescription": "why polymaths win in the AI age",
+      "zhTitle": "数字文艺复兴正在发生",
+      "hasGuide": false
+    },
+    {
+      "id": "c8584a33de17",
+      "title": "How to become so valuable AI will never replace you",
+      "url": "https://letters.thedankoe.com/p/how-to-survive-ai-mass-replacement",
+      "date": "2026-06-22",
+      "source": "邮件文章",
+      "topics": [
+        "学习与思考"
+      ],
+      "access": "public",
+      "sourceDescription": "These 5 skills will determine your future",
+      "zhTitle": "怎样培养 AI 难以替代的价值",
+      "hasGuide": false
+    },
+    {
+      "id": "44dd6315de78",
+      "title": "Life is a mind game, here's how you win",
+      "url": "https://letters.thedankoe.com/p/life-is-a-mind-game-heres-how-you",
+      "date": "2026-04-26",
+      "source": "邮件文章",
+      "topics": [
+        "学习与思考",
+        "生活设计"
+      ],
+      "access": "public",
+      "sourceDescription": "Why most people won't make it",
+      "zhTitle": "把生活看作一场思维游戏",
+      "hasGuide": false
+    },
+    {
+      "id": "989c3298e35c",
+      "title": "I'm begging you to write more essays",
+      "url": "https://letters.thedankoe.com/p/im-begging-you-to-write-more-essays",
+      "date": "2026-04-02",
+      "source": "邮件文章",
+      "topics": [
+        "写作与内容"
+      ],
+      "access": "public",
+      "sourceDescription": "The best way to learn faster, think deeper, and... save humanity",
+      "zhTitle": "请多写一点真正的文章",
+      "hasGuide": true
+    },
+    {
+      "id": "733668ddf169",
+      "title": "How to become so creative it feels illegal",
+      "url": "https://letters.thedankoe.com/p/how-to-become-so-creative-it-feels",
+      "date": "2026-03-24",
+      "source": "邮件文章",
+      "topics": [
+        "写作与内容"
+      ],
+      "access": "public",
+      "sourceDescription": "For those who want to slow the f*ck down and feel alive again",
+      "zhTitle": "怎样练出更强的创造力",
+      "hasGuide": false
+    },
+    {
+      "id": "d0835ab41fb5",
+      "title": "How to think like a strategic genius (5d thinking)",
+      "url": "https://letters.thedankoe.com/p/how-to-think-like-a-strategic-genius",
+      "date": "2026-01-27",
+      "source": "邮件文章",
+      "topics": [
+        "学习与思考"
+      ],
+      "access": "public",
+      "sourceDescription": "When everyone outsources their thinking to machines, thinking becomes your competitive advantage",
+      "zhTitle": "如何进行更高维度的战略思考",
+      "hasGuide": false
+    },
+    {
+      "id": "bcefceb1626f",
+      "title": "The future of work when work is meaningless",
+      "url": "https://letters.thedankoe.com/p/the-future-of-work-when-work-is-meaningless",
+      "date": "2026-01-21",
+      "source": "邮件文章",
+      "topics": [
+        "生活设计"
+      ],
+      "access": "public",
+      "sourceDescription": "Money, AI, jobs and specifically, what the future may hold for creatives",
+      "zhTitle": "当工作失去意义，工作的未来会怎样",
+      "hasGuide": false
+    },
+    {
+      "id": "5ca2c0170bac",
+      "title": "How to stand out in the dead internet",
+      "url": "https://letters.thedankoe.com/p/the-death-of-value-based-content",
+      "date": "2026-01-07",
+      "source": "邮件文章",
+      "topics": [
+        "学习与思考"
+      ],
+      "access": "public",
+      "sourceDescription": "Nobody (actually) talks about this because they're scared to",
+      "zhTitle": "在失去活力的互联网里如何脱颖而出",
+      "hasGuide": false
+    },
+    {
+      "id": "3cb6d5ec272d",
+      "title": "How I'd build a one-person business if I started over in 2026",
+      "url": "https://letters.thedankoe.com/p/how-id-build-a-one-person-business",
+      "date": "2026-01-03",
+      "source": "邮件文章",
+      "topics": [
+        "一人公司"
+      ],
+      "access": "public",
+      "sourceDescription": "Info products are dead & AI changes the game",
+      "zhTitle": "如果 2026 年从头开始，我会怎样建立一人公司",
+      "hasGuide": false
+    },
+    {
+      "id": "c1084e59c486",
+      "title": "You have about 24 months to learn these skills",
+      "url": "https://letters.thedankoe.com/p/something-is-different-about-2026",
+      "date": "2025-12-31",
+      "source": "邮件文章",
+      "topics": [
+        "学习与思考"
+      ],
+      "access": "public",
+      "sourceDescription": "The AI backlash is here & what skills to learn",
+      "zhTitle": "你大约还有 24 个月学习这些技能",
+      "hasGuide": false
+    },
+    {
+      "id": "0a5ab0a4fac5",
+      "title": "How to fix your entire life in 1 day",
+      "url": "https://letters.thedankoe.com/p/how-to-fix-your-entire-life-in-1",
+      "date": "2025-12-23",
+      "source": "邮件文章",
+      "topics": [
+        "生活设计"
+      ],
+      "access": "public",
+      "sourceDescription": "do this before 2026",
+      "zhTitle": "如何用一天重新审视整个生活",
+      "hasGuide": false
+    },
+    {
+      "id": "8f5998ab0431",
+      "title": "Why \"work-life balance\" will ruin your life",
+      "url": "https://letters.thedankoe.com/p/why-work-life-balance-will-ruin-your",
+      "date": "2025-09-15",
+      "source": "邮件文章",
+      "topics": [
+        "生活设计"
+      ],
+      "access": "public",
+      "sourceDescription": "You need to be extreme if you want a zestful life",
+      "zhTitle": "为什么工作与生活的平衡可能害了你",
+      "hasGuide": false
+    },
+    {
+      "id": "e0cc07fbb9b2",
+      "title": "You have about 36 months to make it",
+      "url": "https://thedankoe.com/letters/you-have-about-36-months-to-make-it/",
+      "date": "2025-07-22",
+      "source": "官网文章",
+      "topics": [
+        "一人公司",
+        "生活设计"
+      ],
+      "access": "public",
+      "zhTitle": "你大约还有 36 个月的窗口期",
+      "hasGuide": false
+    }
+  ]
+}

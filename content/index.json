@@ -1,0 +1,162 @@
+{
+  "published": [
+    "989c3298e35c",
+    "fcf5ecd4bc4b",
+    "62e06a0cb614",
+    "9f12a23d9251",
+    "c8584a33de17",
+    "2fd39bf36809",
+    "d90ffe8534ce",
+    "8f5998ab0431",
+    "d0835ab41fb5",
+    "733668ddf169",
+    "44dd6315de78",
+    "bcefceb1626f",
+    "e0cc07fbb9b2",
+    "3cb6d5ec272d",
+    "0a5ab0a4fac5",
+    "c1084e59c486",
+    "5ca2c0170bac"
+  ],
+  "feeds": {
+    "articles": "https://letters.thedankoe.com/feed",
+    "podcast": "https://anchor.fm/s/560a5ae0/podcast/rss"
+  },
+  "media": {
+    "9f12a23d9251": {
+      "videoId": "rAjMOfKSAks",
+      "audioUrl": "https://traffic.megaphone.fm/APO1845212844.mp3",
+      "spotifyEpisodeId": "1yYSp0jyiuZRjPWTVFMIPR",
+      "chapterSourceUrl": "https://share.snipd.com/episode/9495e22f-b6cb-4d7a-a8d5-1288a967afad",
+      "chapters": [
+        {
+          "time": 111,
+          "title": "现实目标为什么会限制你"
+        },
+        {
+          "time": 500,
+          "title": "妄想式目标与注意力"
+        },
+        {
+          "time": 808,
+          "title": "目标与现实扭曲场"
+        },
+        {
+          "time": 980,
+          "title": "设定妄想式目标"
+        },
+        {
+          "time": 1140,
+          "title": "提高行动标准"
+        },
+        {
+          "time": 1217,
+          "title": "寻找最高杠杆路径"
+        }
+      ]
+    },
+    "2fd39bf36809": {
+      "videoId": "XqS7kIWMIDE",
+      "audioUrl": "https://traffic.megaphone.fm/APO9699244691.mp3",
+      "spotifyEpisodeId": "5Ifw8CUeqe78c7RCeauWNX",
+      "chapterSourceUrl": "https://share.snipd.com/episode/f82f0823-5aa9-45bb-a196-b44e05a56316",
+      "chapters": [
+        {
+          "time": 350,
+          "title": "一人企业的三个要素"
+        },
+        {
+          "time": 451,
+          "title": "个人品牌"
+        },
+        {
+          "time": 580,
+          "title": "产品或服务方案"
+        },
+        {
+          "time": 683,
+          "title": "分发与注意力"
+        },
+        {
+          "time": 850,
+          "title": "日常内容节奏"
+        },
+        {
+          "time": 1119,
+          "title": "六个 AI 角色"
+        },
+        {
+          "time": 1438,
+          "title": "与 AI 持续迭代"
+        },
+        {
+          "time": 1734,
+          "title": "搭建 AI 工作流程"
+        }
+      ]
+    },
+    "d90ffe8534ce": {
+      "videoId": "pmQhqVLVApw",
+      "audioUrl": "https://traffic.megaphone.fm/APO2363567409.mp3",
+      "spotifyEpisodeId": "5hqm93LjddTmXCTHqz1bx5",
+      "chapterSourceUrl": "https://share.snipd.com/episode/a5fecde2-26a7-4350-b44c-d278fb780b0e",
+      "chapters": [
+        {
+          "time": 22,
+          "title": "纯粹主义者与自动化者"
+        },
+        {
+          "time": 155,
+          "title": "身心与现实的四个象限"
+        },
+        {
+          "time": 358,
+          "title": "数字文艺复兴"
+        },
+        {
+          "time": 624,
+          "title": "人的判断力"
+        },
+        {
+          "time": 983,
+          "title": "建立难以替代的技能组合"
+        },
+        {
+          "time": 1258,
+          "title": "自我教育与实践"
+        },
+        {
+          "time": 1459,
+          "title": "一人事业"
+        },
+        {
+          "time": 1660,
+          "title": "AI 辅助工作"
+        },
+        {
+          "time": 1863,
+          "title": "AI 工作流程"
+        }
+      ]
+    }
+  },
+  "releases": {
+    "989c3298e35c": "legacy-0738939a54fc",
+    "fcf5ecd4bc4b": "20261020T030935Z-98c4de69",
+    "62e06a0cb614": "20261020T031051Z-0c7788ea",
+    "9f12a23d9251": "20261020T033749Z-012d4508",
+    "c8584a33de17": "20261020T034049Z-89d5dc90",
+    "2fd39bf36809": "20261020T053354Z-bbd994d5",
+    "d90ffe8534ce": "20261020T071833Z-7c3edda7",
+    "8f5998ab0431": "20261020T071903Z-90b8fa9b",
+    "d0835ab41fb5": "20261020T072442Z-d2af2335",
+    "733668ddf169": "20261020T073745Z-98820011",
+    "44dd6315de78": "20261020T073756Z-38a5fab5",
+    "bcefceb1626f": "20261020T073818Z-d2b3dfdc",
+    "e0cc07fbb9b2": "20261020T073837Z-238049a3",
+    "3cb6d5ec272d": "20261020T073904Z-c9c4308c",
+    "0a5ab0a4fac5": "20261020T073929Z-a62c2726",
+    "c1084e59c486": "20261020T073953Z-623cb1a4",
+    "5ca2c0170bac": "20261020T074024Z-9e82d694"
+  }
+}
