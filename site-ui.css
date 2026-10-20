@@ -262,7 +262,8 @@ html { scroll-padding-top: calc(var(--header-height) + 24px); }
   .article-summary { font-size: 16px; }
 }
 @media (max-width: 480px) {
-  .brand span { display: none; }
+  .brand { font-size: 15px; letter-spacing: .06em; }
+  .brand span { font-size: 12px; margin-left: 5px; }
   .theme-switch { min-width: 37px; width: 37px; padding: 5px; }
   .theme-text { display: none; }
 }
@@ -340,6 +341,60 @@ html { scroll-padding-top: calc(var(--header-height) + 24px); }
 .about-head > p.about-stats { margin: 16px 0 0; color: var(--muted); font: 12px/1.6 var(--ui); letter-spacing: .08em; }
 .about-head > p.about-stats:empty { display: none; }
 
+/* Inline QR mention inside body copy */
+.qr-mention {
+  position: relative;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 4px;
+  cursor: help;
+}
+.qr-mention:hover { text-decoration-style: solid; }
+.qr-pop {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 5px);
+  width: 144px;
+  padding: 7px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: var(--white);
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, .38);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 6px);
+  transition: opacity .16s ease, transform .16s ease, visibility .16s ease;
+  pointer-events: none;
+  z-index: 6;
+}
+.qr-pop::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 9px;
+  height: 9px;
+  margin-left: -5px;
+  margin-top: -5px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--white);
+  transform: rotate(45deg);
+}
+.qr-pop img { display: block; width: 100%; height: auto; }
+.qr-mention:hover .qr-pop,
+.qr-mention:focus-visible .qr-pop,
+.qr-mention.is-open .qr-pop {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
 /* Contact dock: hover the floating button to reveal the WeChat QR code */.contact-dock {
   position: fixed;
   right: max(22px, env(safe-area-inset-right));
@@ -367,8 +422,8 @@ html { scroll-padding-top: calc(var(--header-height) + 24px); }
   position: absolute;
   right: 0;
   bottom: 55px;
-  width: 252px;
-  padding: 15px 15px 13px;
+  width: 214px;
+  padding: 13px 13px 11px;
   border: 1px solid var(--line);
   border-radius: 2px;
   background: var(--white);
@@ -382,7 +437,7 @@ html { scroll-padding-top: calc(var(--header-height) + 24px); }
 .contact-dock.is-open .contact-card { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
 .contact-card p { margin: 0; }
 .contact-card-label { font: 11px/1.5 var(--ui); letter-spacing: .12em; color: var(--muted); }
-.contact-qr { display: block; width: 100%; height: auto; margin: 10px 0 9px; border: 1px solid var(--line); background: #fff; }
+.contact-qr { display: block; width: 126px; height: auto; margin: 10px auto 9px; border: 1px solid var(--line); background: #fff; }
 .contact-card-note { font: 12px/1.65 var(--ui); color: var(--muted); text-align: center; }
 .contact-links { display: grid; gap: 6px; margin-top: 12px; padding-top: 11px; border-top: 1px solid var(--line); }
 .contact-links a {
@@ -390,7 +445,7 @@ html { scroll-padding-top: calc(var(--header-height) + 24px); }
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  font: 12px/1.5 var(--ui);
+  font: 11px/1.5 var(--ui);
   color: var(--ink);
   text-decoration: none;
   white-space: nowrap;
@@ -398,10 +453,10 @@ html { scroll-padding-top: calc(var(--header-height) + 24px); }
 }
 .contact-links a > span:first-child { overflow: hidden; text-overflow: ellipsis; }
 .contact-links a:hover { color: var(--accent); }
-.contact-links a span[aria-hidden] { flex: none; color: var(--muted); font-size: 11px; }
+.contact-links a span[aria-hidden] { flex: none; color: var(--muted); font-size: 10px; letter-spacing: .02em; }
 @media (max-width: 640px) {
   .contact-dock { right: max(16px, env(safe-area-inset-right)); bottom: calc(max(16px, env(safe-area-inset-bottom)) + 52px); }
   .contact-dock.is-flush { bottom: max(16px, env(safe-area-inset-bottom)); }
   .contact-trigger { width: 42px; height: 42px; }
-  .contact-card { width: min(252px, calc(100vw - 32px)); }
+  .contact-card { width: min(214px, calc(100vw - 32px)); }
 }

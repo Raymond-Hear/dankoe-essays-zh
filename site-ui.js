@@ -101,6 +101,26 @@
       });
     }
 
+    const mentions = document.querySelectorAll("[data-qr-mention]");
+    if (mentions.length) {
+      const closeMentions = () => mentions.forEach((item) => item.classList.remove("is-open"));
+      mentions.forEach((mention) => {
+        mention.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          const opened = mention.classList.contains("is-open");
+          closeMentions();
+          if (!opened) mention.classList.add("is-open");
+        });
+      });
+      document.addEventListener("click", (event) => {
+        if (!event.target.closest("[data-qr-mention]")) closeMentions();
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeMentions();
+      });
+    }
+
     if (!topButton) return;
     let scheduled = false;
     const updateTopButton = () => {
