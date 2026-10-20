@@ -91,6 +91,34 @@
       "hasGuide": false
     },
     {
+      "id": "5805379d0b22",
+      "title": "Give me 20 minutes and I’ll make you impossible to manipulate",
+      "url": "https://letters.thedankoe.com/p/give-me-20-minutes-and-ill-make-you",
+      "date": "2026-08-19",
+      "source": "邮件文章",
+      "topics": [
+        "学习与思考"
+      ],
+      "access": "public",
+      "sourceDescription": "The world is a circus",
+      "zhTitle": "如何减少被他人操纵的可能",
+      "hasGuide": false
+    },
+    {
+      "id": "bb21cd81cbaf",
+      "title": "How to remember everything you read... don't",
+      "url": "https://letters.thedankoe.com/p/how-to-remember-everything-you-read",
+      "date": "2026-07-25",
+      "source": "邮件文章",
+      "topics": [
+        "学习与思考"
+      ],
+      "access": "public",
+      "sourceDescription": "The best way to learn anything fast",
+      "zhTitle": "读过的东西，要全部记住吗？",
+      "hasGuide": false
+    },
+    {
       "id": "c8584a33de17",
       "title": "How to become so valuable AI will never replace you",
       "url": "https://letters.thedankoe.com/p/how-to-survive-ai-mass-replacement",
@@ -102,6 +130,20 @@
       "access": "public",
       "sourceDescription": "These 5 skills will determine your future",
       "zhTitle": "怎样培养 AI 难以替代的价值",
+      "hasGuide": false
+    },
+    {
+      "id": "2dc520466c73",
+      "title": "Growing on social media is easy, actually",
+      "url": "https://letters.thedankoe.com/p/growing-on-social-media-is-easy-actually",
+      "date": "2026-05-07",
+      "source": "邮件文章",
+      "topics": [
+        "写作与内容"
+      ],
+      "access": "public",
+      "sourceDescription": "There are 2 levers you can pull",
+      "zhTitle": "在社交媒体上成长，或许没那么复杂",
       "hasGuide": false
     },
     {
@@ -148,6 +190,20 @@
       "hasGuide": false
     },
     {
+      "id": "f99724fdd30a",
+      "title": "How to start a one-person business in 2026 (things changed)",
+      "url": "https://letters.thedankoe.com/p/how-to-start-a-one-person-business",
+      "date": "2026-03-11",
+      "source": "邮件文章",
+      "topics": [
+        "一人公司"
+      ],
+      "access": "public",
+      "sourceDescription": "What does a $1m one-person business look like now that everyone has AI?",
+      "zhTitle": "2026 年，如何开始一个人的事业",
+      "hasGuide": false
+    },
+    {
       "id": "d0835ab41fb5",
       "title": "How to think like a strategic genius (5d thinking)",
       "url": "https://letters.thedankoe.com/p/how-to-think-like-a-strategic-genius",
@@ -173,6 +229,20 @@
       "access": "public",
       "sourceDescription": "Money, AI, jobs and specifically, what the future may hold for creatives",
       "zhTitle": "当工作失去意义，工作的未来会怎样",
+      "hasGuide": false
+    },
+    {
+      "id": "8c0ec04c44db",
+      "title": "If you have multiple interests, do not waste the next 2-3 years",
+      "url": "https://letters.thedankoe.com/p/if-you-have-multiple-interests-do",
+      "date": "2026-01-10",
+      "source": "邮件文章",
+      "topics": [
+        "学习与思考"
+      ],
+      "access": "public",
+      "sourceDescription": "They want to put you in a box, don't let them. This is your last advantage.",
+      "zhTitle": "如果你有多种兴趣，别浪费接下来的两三年",
       "hasGuide": false
     },
     {
@@ -232,6 +302,49 @@
       "hasGuide": false
     },
     {
+      "id": "5acfae3b42ae",
+      "title": "How to not waste your 20s (this may sting)",
+      "url": "https://letters.thedankoe.com/p/how-to-not-waste-your-20s-this-may",
+      "date": "2025-10-25",
+      "source": "邮件文章",
+      "topics": [
+        "学习与思考"
+      ],
+      "access": "public",
+      "sourceDescription": "Learn how to learn, how to think, and how to earn",
+      "zhTitle": "如何不浪费你的 20 多岁",
+      "hasGuide": false
+    },
+    {
+      "id": "2c38bd29ab39",
+      "title": "A dopamine detox to reset your life in 30 days",
+      "url": "https://letters.thedankoe.com/p/a-dopamine-detox-to-reset-your-life",
+      "date": "2025-10-16",
+      "source": "邮件文章",
+      "topics": [
+        "专注与行动",
+        "生活设计"
+      ],
+      "access": "public",
+      "sourceDescription": "Because most of modern life has become a blur, and you're tired of it",
+      "zhTitle": "用 30 天减少多巴胺刺激，重新调整生活",
+      "hasGuide": false
+    },
+    {
+      "id": "c7231b141979",
+      "title": "Yes, the matrix is real, here's how to escape it",
+      "url": "https://letters.thedankoe.com/p/the-social-matrix-how-the-1-elites",
+      "date": "2025-10-02",
+      "source": "邮件文章",
+      "topics": [
+        "学习与思考"
+      ],
+      "access": "public",
+      "sourceDescription": "it's not what you think",
+      "zhTitle": "矩阵真的存在？如何摆脱它",
+      "hasGuide": false
+    },
+    {
       "id": "8f5998ab0431",
       "title": "Why \"work-life balance\" will ruin your life",
       "url": "https://letters.thedankoe.com/p/why-work-life-balance-will-ruin-your",
@@ -262,7 +375,7 @@
   ],
   "stats": {
     "publicTotal": 242,
-    "translated": 17,
+    "translated": 25,
     "since": "2021"
   }
 }
