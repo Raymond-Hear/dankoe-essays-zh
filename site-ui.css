@@ -82,6 +82,8 @@ html { scroll-padding-top: calc(var(--header-height) + 24px); }
 }
 .theme-switch:hover { border-color: var(--accent); background: var(--hover); }
 .theme-symbol { font: 19px/1 Georgia, serif; width: 18px; text-align: center; }
+.brand { display: inline-flex; align-items: center; }
+.brand-mark { display: block; width: 22px; height: 22px; margin-right: 9px; border-radius: 3px; }
 .header-icon {
   display: inline-flex;
   align-items: center;
@@ -224,7 +226,7 @@ html { scroll-padding-top: calc(var(--header-height) + 24px); }
 /* Illustrated reading library */
 .site-main { max-width: 1180px; }
 .intro { display: flex; align-items: baseline; justify-content: space-between; gap: 24px 30px; padding: 24px 0 20px; border-bottom: 1px solid var(--line); }
-.intro h1 { max-width: 640px; margin: 0; color: var(--ink); font: 400 clamp(15px, 1.25vw, 16px)/1.65 var(--body); letter-spacing: 0; }
+.intro h1 { max-width: 640px; margin: 0; color: var(--ink); font: 400 clamp(16px, 1.35vw, 17px)/1.6 var(--body); letter-spacing: 0; }
 .library { padding-top: 26px; }
 .search-field { max-width: 390px; margin: 26px 0 34px; }
 .search-field input { background: var(--white); }
