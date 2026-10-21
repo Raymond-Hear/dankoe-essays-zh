@@ -378,8 +378,6 @@ html { scroll-padding-top: calc(var(--header-height) + 24px); }
 .book-actions { display: flex; flex-wrap: wrap; gap: 12px 23px; }
 .book-actions a { color: var(--accent); text-decoration: none; font: 600 13px/1.5 var(--ui); border-bottom: 1px solid currentColor; }
 .book-actions a:hover { color: var(--ink); }
-.book-actions a[hidden] { display: none; }
-.books-note { max-width: 740px; margin: 28px 0 0; color: var(--muted); font: 13px/1.75 var(--ui); }
 @media (max-width: 760px) { .books-main { padding: 55px 18px 80px; } .book-list { grid-template-columns: 1fr; } .book-card { min-height: 0; padding: 24px; grid-template-columns: 55px minmax(0, 1fr); } }
 
 .private-book-main { max-width: 1180px; margin: 0 auto; padding: 34px 24px 100px; }
