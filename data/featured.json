@@ -1,1 +1,26 @@
-{}
+{
+  "0a5ab0a4fac5": {
+    "category": "performance",
+    "reason": "Dan Koe 最具破圈效应的文章之一，将改变人生的问题从「如何更自律」推进到「如何改变身份认同」，并提供一套从反向愿景到每日行动的完整自我审视流程。",
+    "evidenceUrl": "https://letters.thedankoe.com/p/how-to-fix-your-entire-life-in-1?utm_source=chatgpt.com",
+    "updatedAt": "2026-10-21T02:13:13+00:00"
+  },
+  "f99724fdd30a": {
+    "category": "editorial",
+    "reason": "以 AI 时代的一人公司为场景，将个人定位、内容生产、产品设计和获客转化整合成一套可操作的商业流程，适合从理解 Dan Koe 思想过渡到实际应用的读者。",
+    "evidenceUrl": "https://letters.thedankoe.com/p/how-to-start-a-one-person-business?utm_source=chatgpt.com",
+    "updatedAt": "2026-10-21T02:16:17+00:00"
+  },
+  "bae61bd5e559": {
+    "category": "content",
+    "reason": "通过区分战略与战术，解释为什么不断学习新工具、追逐技巧只会制造虚假的进步感，以及如何从更高层次思考目标、约束和行动方向。",
+    "evidenceUrl": "https://letters.thedankoe.com/p/strategy-vs-tactics-how-to-actually?utm_source=chatgpt.com",
+    "updatedAt": "2026-10-21T02:15:44+00:00"
+  },
+  "39687aa5b458": {
+    "category": "performance",
+    "reason": "不只是教人说话更流畅，而是通过建立核心观点储备、组织故事和跨领域综合，让读者把零散的知识转化为清晰、有说服力的个人表达。",
+    "evidenceUrl": "https://letters.thedankoe.com/p/how-to-articulate-yourself-intelligently?utm_source=chatgpt.com",
+    "updatedAt": "2026-10-21T02:13:57+00:00"
+  }
+}

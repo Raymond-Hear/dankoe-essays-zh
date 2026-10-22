@@ -26,6 +26,84 @@ function coverUrl(article) {
   return "covers/" + encodeURIComponent(article.id) + ".jpg";
 }
 
+function setupCarousel(track, count, position, previous, next, toggle) {
+  const section = track.parentElement;
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  if (count > 1) {
+    const firstCardCopy = track.firstElementChild.cloneNode(true);
+    firstCardCopy.setAttribute("aria-hidden", "true");
+    firstCardCopy.inert = true;
+    track.appendChild(firstCardCopy);
+  }
+  let timer;
+  let wrapTimer;
+  let manuallyPaused = false;
+  let hovering = false;
+  let focused = false;
+  const rawIndex = () => Math.round(track.scrollLeft / Math.max(1, track.clientWidth));
+  const currentIndex = () => rawIndex() % count;
+  const update = () => {
+    position.textContent = String(currentIndex() + 1).padStart(2, "0") + " / " + String(count).padStart(2, "0");
+  };
+  const resetAtEnd = () => {
+    if (rawIndex() === count) track.scrollTo({ left: 0, behavior: "instant" });
+  };
+  const stop = () => { clearInterval(timer); timer = undefined; };
+  const canPlay = () => count > 1 && !manuallyPaused && !hovering && !focused && !document.hidden && !reducedMotion.matches;
+  const start = () => {
+    stop();
+    if (canPlay()) timer = window.setInterval(() => go(1, false), 5000);
+  };
+  const go = (step, restart = true) => {
+    const target = step > 0 && currentIndex() === count - 1 ? count : (currentIndex() + step + count) % count;
+    track.scrollTo({ left: target * track.clientWidth, behavior: reducedMotion.matches ? "instant" : "smooth" });
+    if (target === count) {
+      clearTimeout(wrapTimer);
+      wrapTimer = window.setTimeout(resetAtEnd, 900);
+    }
+    if (restart) start();
+  };
+  previous.addEventListener("click", () => go(-1));
+  next.addEventListener("click", () => go(1));
+  toggle.addEventListener("click", () => {
+    manuallyPaused = !manuallyPaused;
+    toggle.textContent = manuallyPaused ? "▶" : "Ⅱ";
+    toggle.setAttribute("aria-label", manuallyPaused ? "继续自动轮播" : "暂停自动轮播");
+    toggle.title = toggle.getAttribute("aria-label");
+    start();
+  });
+  section.addEventListener("pointerenter", (event) => {
+    if (event.pointerType === "mouse") { hovering = true; stop(); }
+  });
+  section.addEventListener("pointerleave", (event) => {
+    if (event.pointerType === "mouse") { hovering = false; start(); }
+  });
+  section.addEventListener("focusin", () => { focused = true; stop(); });
+  section.addEventListener("focusout", () => {
+    window.setTimeout(() => { focused = section.contains(document.activeElement); start(); }, 0);
+  });
+  track.addEventListener("pointerdown", stop);
+  track.addEventListener("pointerup", start);
+  track.addEventListener("scroll", update, { passive: true });
+  track.addEventListener("scrollend", resetAtEnd);
+  window.addEventListener("resize", update);
+  document.addEventListener("visibilitychange", start);
+  reducedMotion.addEventListener("change", start);
+  update();
+  start();
+}
+
+function visiblePublishedArticles(catalog, published) {
+  return catalog.articles.filter((article) => published.has(article.id)
+    && (!article.duplicateOf || !published.has(article.duplicateOf)));
+}
+
+function normalizeSearch(value) {
+  return String(value || "").normalize("NFKC").toLocaleLowerCase()
+    .replace(/[\u2010-\u2015\u2212\uFE58\uFE63\uFF0D-]/g, " ")
+    .replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+}
+
 function formatTime(seconds) {
   const minutes = Math.floor(seconds / 60);
   return String(minutes).padStart(2, "0") + ":" + String(seconds % 60).padStart(2, "0");
@@ -37,9 +115,102 @@ function sourceRow(label, url, text) {
     '</a></dd></div>';
 }
 
+function restoreArticleImages(articleId) {
+  const english = $("#panel-en");
+  const chinese = $("#panel-zh");
+  // Two older approved English copies still contain self-promotional blocks.
+  // Keep the immutable releases intact; omit those blocks when reading.
+  if (articleId === "c8584a33de17") {
+    let node = [...english.children].find((item) => item.textContent.startsWith("Before we begin, self-sponsorship"));
+    while (node && node.tagName !== "H3") {
+      const next = node.nextElementSibling;
+      node.remove();
+      node = next;
+    }
+  }
+  if (articleId === "2fd39bf36809") {
+    for (const node of [...english.children]) {
+      if (node.textContent.startsWith("I’ve actually created all of these for you") ||
+          node.textContent.startsWith("» You can find all of them here")) node.remove();
+      if (node.tagName === "IMG") node.remove();
+    }
+  }
+  const originalImages = [...english.querySelectorAll("img")];
+  const candidates = originalImages.map((img, index) => ({ img, index })).filter(({ img }) => {
+    try { return new URL(img.src).hostname === "substackcdn.com"; } catch { return false; }
+  });
+  if (!candidates.length || chinese.querySelector("img")) return;
+
+  // Older Chinese releases may have different paragraph counts. Match numbered
+  // sections first, then use the reading depth inside that section.
+  const englishNodes = [...english.children];
+  const chineseNodes = [...chinese.children];
+  const textSize = (node) => node.textContent.trim().length;
+  const sectionHeadings = (nodes) => {
+    const headings = nodes.map((node, index) => ({ node, index }))
+      .filter(({ node }) => /^H[23]$/.test(node.tagName));
+    const level = Math.min(...headings.map(({ node }) => Number(node.tagName[1])));
+    return headings.filter(({ node }) => Number(node.tagName[1]) === level);
+  };
+  const enHeadings = sectionHeadings(englishNodes);
+  const zhHeadings = sectionHeadings(chineseNodes);
+  const chineseNumerals = { "一": 1, "二": 2, "三": 3, "四": 4, "五": 5, "六": 6, "七": 7, "八": 8, "九": 9, "十": 10 };
+  const sectionNumber = (heading) => {
+    const value = heading?.textContent.trim() || "";
+    const step = value.match(/^(?:Step\s*(\d+)|第([一二三四五六七八九十\d]+)步)/i);
+    if (step) return Number(step[1] || chineseNumerals[step[2]] || step[2]);
+    const arabic = value.match(/^(\d+)[.、．\s]/);
+    if (arabic) return Number(arabic[1]);
+    const han = value.match(/^([一二三四五六七八九十])[、.．]/);
+    if (han) return chineseNumerals[han[1]];
+    const roman = value.match(/^(VII|VIII|VI|IV|III|II|IX|V|I|X)(?:\s|[.、．—–-])/i);
+    if (!roman) return null;
+    return { I: 1, II: 2, III: 3, IV: 4, V: 5, VI: 6, VII: 7, VIII: 8, IX: 9, X: 10 }[roman[1].toUpperCase()];
+  };
+  const lastFigureAfter = new Map();
+  for (const { img, index } of candidates) {
+    const imageNodeIndex = englishNodes.findIndex((node) => node.contains(img));
+    const enSectionIndex = enHeadings.findLastIndex(({ index: headingIndex }) => headingIndex <= imageNodeIndex);
+    const enSection = enHeadings[enSectionIndex];
+    const number = sectionNumber(enSection?.node);
+    const zhSectionIndex = number == null ? enSectionIndex : zhHeadings.findIndex(({ node }) => sectionNumber(node) === number);
+    const zhSection = zhHeadings[zhSectionIndex >= 0 ? zhSectionIndex : enSectionIndex];
+    const enStart = enSection ? enSection.index + 1 : 0;
+    const enEnd = enHeadings[enSectionIndex + 1]?.index ?? englishNodes.length;
+    const zhStart = zhSection ? zhSection.index + 1 : 0;
+    const zhEnd = zhHeadings[(zhSectionIndex >= 0 ? zhSectionIndex : enSectionIndex) + 1]?.index ?? chineseNodes.length;
+    const enLength = englishNodes.slice(enStart, enEnd).reduce((sum, node) => sum + textSize(node), 0) || 1;
+    const enRead = englishNodes.slice(enStart, Math.max(enStart, imageNodeIndex)).reduce((sum, node) => sum + textSize(node), 0);
+    const zhLength = chineseNodes.slice(zhStart, zhEnd).reduce((sum, node) => sum + textSize(node), 0);
+    const target = (enRead / enLength) * zhLength;
+    let read = 0;
+    let anchor = chineseNodes[Math.max(0, zhStart - 1)];
+    for (const node of chineseNodes.slice(zhStart, zhEnd)) {
+      read += textSize(node);
+      if (target > 0) anchor = node;
+      if (read >= target) break;
+    }
+    if (!anchor) continue;
+    const figure = document.createElement("figure");
+    figure.className = "source-figure";
+    const copy = document.createElement("img");
+    copy.src = img.src;
+    copy.alt = img.alt || "Dan Koe 原文插图";
+    copy.loading = "lazy";
+    copy.decoding = "async";
+    figure.appendChild(copy);
+    const caption = document.createElement("figcaption");
+    caption.textContent = "原文插图";
+    figure.appendChild(caption);
+    const insertionPoint = lastFigureAfter.get(anchor) || anchor;
+    insertionPoint.after(figure);
+    lastFigureAfter.set(anchor, figure);
+  }
+}
+
 function initHome(catalog, contentIndex, editorial, featured) {
   const published = new Set(contentIndex.published || []);
-  const articles = catalog.articles.filter((article) => published.has(article.id));
+  const articles = visiblePublishedArticles(catalog, published);
   const count = $("#articleCount");
   const list = $("#articleList");
   const input = $("#searchInput");
@@ -49,6 +220,23 @@ function initHome(catalog, contentIndex, editorial, featured) {
   let selectedTopic = "";
   let featuredOnly = false;
 
+  const featuredArticles = Object.keys(featured).map((id) => articles.find((article) => article.id === id)).filter(Boolean);
+  const featuredSection = $("#featured");
+  if (featuredArticles.length) {
+    featuredSection.hidden = false;
+    const track = $("#featuredTrack");
+    track.innerHTML = featuredArticles.map((article, index) =>
+      '<article class="featured-card"><a class="featured-cover" href="' + articleUrl(article) + '">' +
+      '<img src="' + coverUrl(article) + '" alt="" loading="' + (index === 0 ? 'eager' : 'lazy') + '" width="1200" height="675"></a>' +
+      '<div class="featured-copy"><time class="featured-number" datetime="' + escapeHtml(article.date || '') + '">' + escapeHtml(article.date || '') + '</time>' +
+      '<h3><a href="' + articleUrl(article) + '">' + escapeHtml(article.zhTitle || article.title) + '</a></h3>' +
+      '<p class="featured-summary">' + escapeHtml(editorial[article.id]?.summary || '') + '</p>' +
+      '<a class="featured-read" href="' + articleUrl(article) + '">阅读文章 <span aria-hidden="true">→</span></a></div></article>'
+    ).join("");
+    setupCarousel(track, featuredArticles.length, $("#featuredPosition"),
+      $("#featuredPrev"), $("#featuredNext"), $("#featuredToggle"));
+  }
+
   const topics = [...new Set(articles.flatMap((article) => article.topics || []))];
   const years = [...new Set(articles.map((article) => (article.date || "").slice(0, 4)).filter(Boolean))].sort().reverse();
   tagBar.innerHTML = ['<button type="button" data-topic="" aria-pressed="true">全部</button>',
@@ -57,10 +245,12 @@ function initHome(catalog, contentIndex, editorial, featured) {
   yearSelect.innerHTML = '<option value="">全部年份</option>' + years.map((year) => '<option value="' + escapeHtml(year) + '">' + escapeHtml(year) + ' 年</option>').join("");
 
   function render() {
-    const terms = input.value.toLocaleLowerCase().trim().split(/\s+/).filter(Boolean);
+    const terms = normalizeSearch(input.value).split(/\s+/).filter(Boolean);
     const matches = articles.filter((article) => {
-      const searchable = [article.title, article.zhTitle || "", editorial[article.id]?.summary || "", ...(article.topics || [])].join(" ").toLocaleLowerCase();
-      return terms.every((term) => searchable.includes(term))
+      const searchable = normalizeSearch([article.title, article.zhTitle || "", editorial[article.id]?.summary || "",
+        ...(article.topics || []), ...(article.alternateSources || []).map((source) => source.title)].join(" "));
+      const words = searchable.split(/\s+/);
+      return terms.every((term) => term === "ai" ? words.includes(term) : searchable.includes(term))
         && (!featuredOnly || Boolean(featured[article.id]))
         && (!selectedTopic || (article.topics || []).includes(selectedTopic))
         && (!yearSelect.value || (article.date || "").startsWith(yearSelect.value));
@@ -89,6 +279,12 @@ function initHome(catalog, contentIndex, editorial, featured) {
     selectedTopic = featuredOnly ? "" : button.dataset.topic;
     tagBar.querySelectorAll("button").forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
     render();
+  });
+  $("#featuredFilter")?.addEventListener("click", () => {
+    const button = tagBar.querySelector('button[data-featured="true"]');
+    button?.click();
+    $("#articles").scrollIntoView({ behavior: "smooth", block: "start" });
+    input.focus({ preventScroll: true });
   });
   render();
 }
@@ -226,7 +422,7 @@ function renderMedia(article) {
   }
 }
 
-async function initArticle(catalog, contentIndex, editorial, featured) {
+async function initArticle(catalog, contentIndex, editorial, featured, guides) {
   const params = new URLSearchParams(location.search);
   const id = params.get("id");
   const published = new Set(contentIndex.published || []);
@@ -243,15 +439,19 @@ async function initArticle(catalog, contentIndex, editorial, featured) {
   ]);
   const media = { ...article, ...((contentIndex.media || {})[id] || {}) };
   const summary = editorial[id]?.summary || "";
+  const guide = guides[id]?.sourceRevision === revision && Array.isArray(guides[id]?.cards)
+    && guides[id].cards.length > 1 ? guides[id] : null;
   const hasMedia = Boolean(media.videoId || media.audioUrl || media.spotifyEpisodeId);
   const feeds = contentIndex.feeds || {};
-  const available = catalog.articles.filter((entry) => published.has(entry.id));
-  const position = available.findIndex((entry) => entry.id === id);
+  const available = visiblePublishedArticles(catalog, published);
+  const navigationId = article.duplicateOf && published.has(article.duplicateOf) ? article.duplicateOf : id;
+  const position = available.findIndex((entry) => entry.id === navigationId);
   const previous = available[position - 1];
   const next = available[position + 1];
   const pagerLink = (entry, label) => entry ? '<a href="' + articleUrl(entry) +
     '"><span>' + label + '</span><strong>' + escapeHtml(entry.zhTitle || entry.title) + '</strong></a>' : '<span></span>';
   const sources = [sourceRow("文章", article.url, "Dan Koe 文章原址")];
+  for (const source of article.alternateSources || []) sources.push(sourceRow("同文另一来源", source.url, source.title));
   if (editorial[id]?.sourceCoverUrl) sources.push(sourceRow("封面", editorial[id].sourceCoverUrl, "Dan Koe 原文配图"));
   if (media.videoId) sources.push(sourceRow("视频", "https://www.youtube.com/watch?v=" + encodeURIComponent(media.videoId), "YouTube 原视频"));
   if (media.audioUrl) sources.push(sourceRow("音频", media.audioUrl, "The Koe Cast 原始 MP3"));
@@ -267,6 +467,8 @@ async function initArticle(catalog, contentIndex, editorial, featured) {
     '<p class="original-title" lang="en">' + escapeHtml(article.title) + '</p>' +
     '<p class="article-summary">' + escapeHtml(summary) + '</p>' +
     (hasMedia ? '<a class="listen-link" href="#listen">' + (media.videoId ? '看视频 / 听音频' : '收听音频') + ' <span aria-hidden="true">↗</span></a>' : '') + '</header>' +
+    (guide ? '<section class="reader-guide" aria-labelledby="guideTitle"><div class="guide-heading"><h2 id="guideTitle">先读这篇</h2><div class="guide-actions"><span id="guidePosition">01 / ' + String(guide.cards.length).padStart(2, '0') + '</span><button id="guideToggle" class="carousel-toggle" type="button" aria-label="暂停自动轮播" title="暂停自动轮播">Ⅱ</button><button id="guidePrev" type="button" aria-label="上一个要点">←</button><button id="guideNext" type="button" aria-label="下一个要点">→</button></div></div><div id="guideTrack" class="guide-track" aria-label="文章要点">' +
+      guide.cards.map((card, index) => '<article class="guide-card"><span class="guide-number">要点 ' + String(index + 1).padStart(2, '0') + '</span><h3>' + escapeHtml(card.title) + '</h3><p>' + escapeHtml(card.text) + '</p><a href="#section-zh-' + Number(card.heading) + '">读这一节 <span aria-hidden="true">→</span></a></article>').join('') + '</div></section>' : '') +
     (hasMedia ? '<details id="listen" class="media-drawer"><summary>' + (media.videoId ? '观看与收听' : '收听音频') + '<span>播放器 <span aria-hidden="true">↓</span></span></summary><div id="readerMedia" class="reader-media"></div></details>' : '') +
     '<div class="language-tabs" role="tablist" aria-label="阅读语言">' +
     '<button type="button" role="tab" id="tab-zh" aria-controls="panel-zh" data-lang="zh">中文精读</button>' +
@@ -277,6 +479,7 @@ async function initArticle(catalog, contentIndex, editorial, featured) {
     english + '</div></div>' +
     '<section class="source-card" aria-labelledby="sourceTitle"><h2 id="sourceTitle">来源与链接</h2><dl>' + sources.join("") + '</dl></section>' +
     '<nav class="article-pagination" aria-label="上一篇与下一篇">' + pagerLink(previous, "上一篇") + pagerLink(next, "下一篇") + '</nav></article>';
+  restoreArticleImages(id);
   if (hasMedia) {
     renderMedia(media);
     function revealMedia() {
@@ -316,15 +519,22 @@ async function initArticle(catalog, contentIndex, editorial, featured) {
   }
   buttons.forEach((button) => button.addEventListener("click", () => selectLanguage(button.dataset.lang)));
   selectLanguage(new URLSearchParams(location.search).get("lang") === "en" ? "en" : "zh");
+  if (guide) {
+    const track = $("#guideTrack");
+    setupCarousel(track, guide.cards.length, $("#guidePosition"),
+      $("#guidePrev"), $("#guideNext"), $("#guideToggle"));
+    track.querySelectorAll('a[href^="#section-zh-"]').forEach((link) => link.addEventListener("click", () => selectLanguage("zh")));
+  }
 }
 
 async function boot() {
   try {
-    const [catalog, contentIndex, editorial, featured] = await Promise.all([
-      loadJson("data/catalog.json"), loadJson("content/index.json"), loadJson("data/editorial.json"), loadJson("data/featured.json"),
+    const [catalog, contentIndex, editorial, featured, guides] = await Promise.all([
+      loadJson("data/catalog.json"), loadJson("content/index.json"), loadJson("data/editorial.json"),
+      loadJson("data/featured.json"), loadJson("data/guides.json"),
     ]);
     if (document.body.dataset.page === "home") initHome(catalog, contentIndex, editorial, featured);
-    else await initArticle(catalog, contentIndex, editorial, featured);
+    else await initArticle(catalog, contentIndex, editorial, featured, guides);
   } catch (error) {
     const target = document.body.dataset.page === "home" ? $("#articleList") : $("#readerContent");
     target.innerHTML = '<p class="empty-state">正文暂时无法读取，请稍后再试。</p>';

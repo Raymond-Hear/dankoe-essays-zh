@@ -15,7 +15,8 @@
     "写作与内容",
     "专注与行动",
     "学习与思考",
-    "生活设计"
+    "生活设计",
+    "AI"
   ],
   "articles": [
     {
@@ -69,7 +70,8 @@
       "source": "邮件文章",
       "topics": [
         "一人公司",
-        "学习与思考"
+        "学习与思考",
+        "AI"
       ],
       "access": "public",
       "sourceDescription": "Your interests + social media + AI = modern business",
@@ -83,7 +85,8 @@
       "date": "2026-08-27",
       "source": "邮件文章",
       "topics": [
-        "学习与思考"
+        "学习与思考",
+        "AI"
       ],
       "access": "public",
       "sourceDescription": "why polymaths win in the AI age",
@@ -125,7 +128,8 @@
       "date": "2026-07-25",
       "source": "邮件文章",
       "topics": [
-        "学习与思考"
+        "学习与思考",
+        "AI"
       ],
       "access": "public",
       "sourceDescription": "The best way to learn anything fast",
@@ -170,7 +174,8 @@
       "date": "2026-06-22",
       "source": "邮件文章",
       "topics": [
-        "学习与思考"
+        "学习与思考",
+        "AI"
       ],
       "access": "public",
       "sourceDescription": "These 5 skills will determine your future",
@@ -242,7 +247,8 @@
       "date": "2026-04-02",
       "source": "邮件文章",
       "topics": [
-        "写作与内容"
+        "写作与内容",
+        "AI"
       ],
       "access": "public",
       "sourceDescription": "The best way to learn faster, think deeper, and... save humanity",
@@ -270,7 +276,8 @@
       "date": "2026-03-11",
       "source": "邮件文章",
       "topics": [
-        "一人公司"
+        "一人公司",
+        "AI"
       ],
       "access": "public",
       "sourceDescription": "What does a $1m one-person business look like now that everyone has AI?",
@@ -298,7 +305,8 @@
       "date": "2026-01-21",
       "source": "邮件文章",
       "topics": [
-        "生活设计"
+        "生活设计",
+        "AI"
       ],
       "access": "public",
       "sourceDescription": "Money, AI, jobs and specifically, what the future may hold for creatives",
@@ -326,7 +334,8 @@
       "date": "2026-01-07",
       "source": "邮件文章",
       "topics": [
-        "学习与思考"
+        "学习与思考",
+        "AI"
       ],
       "access": "public",
       "sourceDescription": "Nobody (actually) talks about this because they're scared to",
@@ -340,7 +349,8 @@
       "date": "2026-01-03",
       "source": "邮件文章",
       "topics": [
-        "一人公司"
+        "一人公司",
+        "AI"
       ],
       "access": "public",
       "sourceDescription": "Info products are dead & AI changes the game",
@@ -354,7 +364,8 @@
       "date": "2025-12-31",
       "source": "邮件文章",
       "topics": [
-        "学习与思考"
+        "学习与思考",
+        "AI"
       ],
       "access": "public",
       "sourceDescription": "The AI backlash is here & what skills to learn",
@@ -396,11 +407,27 @@
       "date": "2025-11-27",
       "source": "邮件文章",
       "topics": [
-        "学习与思考"
+        "学习与思考",
+        "AI"
       ],
       "access": "public",
       "sourceDescription": "Most people don't know how to use AI",
       "zhTitle": "如何比大多数人更好地使用 AI",
+      "hasGuide": false
+    },
+    {
+      "id": "39687aa5b458",
+      "title": "How to articulate yourself intelligently",
+      "url": "https://letters.thedankoe.com/p/how-to-articulate-yourself-intelligently",
+      "date": "2025-11-20",
+      "source": "邮件文章",
+      "topics": [
+        "学习与思考",
+        "生活设计"
+      ],
+      "access": "public",
+      "sourceDescription": "The inner album of greatest hits, and 3 frameworks to practice with",
+      "zhTitle": "如何更清楚、更有条理地表达自己",
       "hasGuide": false
     },
     {
@@ -433,6 +460,20 @@
       "hasGuide": false
     },
     {
+      "id": "dd51b661f7ba",
+      "title": "How to become so focused it feels illegal",
+      "url": "https://letters.thedankoe.com/p/how-to-become-so-focused-it-feels",
+      "date": "2025-10-09",
+      "source": "邮件文章",
+      "topics": [
+        "专注与行动"
+      ],
+      "access": "public",
+      "sourceDescription": "On deep work and brain altering technology",
+      "zhTitle": "如何练出极强的专注力",
+      "hasGuide": false
+    },
+    {
       "id": "c7231b141979",
       "title": "Yes, the matrix is real, here's how to escape it",
       "url": "https://letters.thedankoe.com/p/the-social-matrix-how-the-1-elites",
@@ -461,6 +502,20 @@
       "hasGuide": false
     },
     {
+      "id": "ffc39ae7dacf",
+      "title": "What the f*ck is wrong with everyone right now?",
+      "url": "https://letters.thedankoe.com/p/what-the-fck-is-wrong-with-everyone",
+      "date": "2025-09-17",
+      "source": "邮件文章",
+      "topics": [
+        "学习与思考"
+      ],
+      "access": "public",
+      "sourceDescription": "The world is going insane (as usual)",
+      "zhTitle": "现在大家究竟怎么了？",
+      "hasGuide": false
+    },
+    {
       "id": "8f5998ab0431",
       "title": "Why \"work-life balance\" will ruin your life",
       "url": "https://letters.thedankoe.com/p/why-work-life-balance-will-ruin-your",
@@ -473,6 +528,108 @@
       "sourceDescription": "You need to be extreme if you want a zestful life",
       "zhTitle": "为什么工作与生活的平衡可能害了你",
       "hasGuide": false
+    },
+    {
+      "id": "dcb69f80fe71",
+      "title": "The 3 Levels Of Money (How To Escape Wage Slavery)",
+      "url": "https://letters.thedankoe.com/p/the-3-levels-of-money-how-to-escape",
+      "date": "2025-09-01",
+      "source": "邮件文章",
+      "topics": [
+        "一人公司"
+      ],
+      "access": "public",
+      "sourceDescription": "How to pursue your life's work",
+      "zhTitle": "金钱的三个层次：如何摆脱对工资的依赖",
+      "hasGuide": false
+    },
+    {
+      "id": "7c5fed260db8",
+      "title": "A Complete Knowledge Base Of HUMAN 3.0",
+      "url": "https://thedankoe.com/letters/a-complete-knowledge-base-of-human-3-0/",
+      "date": "2025-08-31",
+      "source": "官网文章",
+      "topics": [
+        "一人公司",
+        "学习与思考",
+        "生活设计"
+      ],
+      "access": "public",
+      "zhTitle": "HUMAN 3.0：完整知识库",
+      "hasGuide": false
+    },
+    {
+      "id": "61583fe45d58",
+      "title": "Prompt: HUMAN 3.0 Self-Discovery & Metatype Test",
+      "url": "https://letters.thedankoe.com/p/prompt-human-30-self-discovery-and",
+      "date": "2025-08-27",
+      "source": "邮件文章",
+      "topics": [
+        "生活设计",
+        "AI"
+      ],
+      "access": "public",
+      "sourceDescription": "Identify your next core problem, become aware of blind spots, and maximize your potential",
+      "zhTitle": "提示词：HUMAN 3.0 自我发现与类型测试",
+      "hasGuide": false
+    },
+    {
+      "id": "7a3903c47813",
+      "title": "HUMAN 3.0 – A Map To Reach The Top 1%",
+      "url": "https://thedankoe.com/letters/human-3-0-a-map-to-reach-the-top-1/",
+      "date": "2025-08-26",
+      "source": "官网文章",
+      "topics": [
+        "一人公司",
+        "生活设计"
+      ],
+      "access": "public",
+      "zhTitle": "HUMAN 3.0：一张成长地图",
+      "hasGuide": false
+    },
+    {
+      "id": "82f5799e8c37",
+      "title": "12 rules to change your life in 12 months",
+      "url": "https://letters.thedankoe.com/p/12-rules-to-change-your-life-in-12",
+      "date": "2025-08-18",
+      "source": "邮件文章",
+      "topics": [
+        "生活设计"
+      ],
+      "access": "public",
+      "sourceDescription": "My life philosophy, condensed",
+      "zhTitle": "12 个月改变生活的 12 条规则",
+      "hasGuide": false
+    },
+    {
+      "id": "39ca9b94fb67",
+      "title": "AI will never replace true creators",
+      "url": "https://letters.thedankoe.com/p/most-creators-will-fail-in-the-next",
+      "date": "2025-08-14",
+      "source": "邮件文章",
+      "topics": [
+        "写作与内容",
+        "学习与思考",
+        "AI"
+      ],
+      "access": "public",
+      "sourceDescription": "if you understand this, you're set",
+      "zhTitle": "AI 永远无法替代真正的创作者？",
+      "hasGuide": false
+    },
+    {
+      "id": "6b6bd10aa166",
+      "title": "You don’t need a niche, you need a point of view",
+      "url": "https://thedankoe.com/letters/you-dont-need-a-niche-you-need-a-point-of-view/",
+      "date": "2025-07-31",
+      "source": "官网文章",
+      "topics": [
+        "一人公司",
+        "写作与内容"
+      ],
+      "access": "public",
+      "zhTitle": "你需要的不是细分领域，而是自己的视角",
+      "hasGuide": true
     },
     {
       "id": "922e74f0e836",
@@ -496,7 +653,8 @@
       "source": "官网文章",
       "topics": [
         "一人公司",
-        "生活设计"
+        "生活设计",
+        "AI"
       ],
       "access": "public",
       "zhTitle": "你大约还有 36 个月的窗口期",
@@ -529,6 +687,19 @@
       "hasGuide": false
     },
     {
+      "id": "2cce566dc314",
+      "title": "This single decision will determine most of your life",
+      "url": "https://thedankoe.com/letters/this-single-decision-will-determine-most-of-your-life/",
+      "date": "2025-06-23",
+      "source": "官网文章",
+      "topics": [
+        "生活设计"
+      ],
+      "access": "public",
+      "zhTitle": "这一个决定，可能决定你人生的大部分走向",
+      "hasGuide": false
+    },
+    {
       "id": "9febf9c741f7",
       "title": "The Death Of Thoughtful Creation (& How To Get Ahead Of Everyone Else)",
       "url": "https://thedankoe.com/letters/the-death-of-thoughtful-creation-how-to-get-ahead-of-everyone-else/",
@@ -554,7 +725,47 @@
       "access": "public",
       "sourceDescription": "why fitting in will make you unsuccessful",
       "zhTitle": "如果你想快乐，试着接受当个“失败者”",
-      "hasGuide": false
+      "hasGuide": false,
+      "alternateSources": [
+        {
+          "title": "Be A Loser – If You Want To Be Happy",
+          "url": "https://thedankoe.com/letters/be-a-loser-if-you-want-to-be-happy/"
+        }
+      ]
+    },
+    {
+      "id": "7f2bc52b6c68",
+      "title": "Be A Loser – If You Want To Be Happy",
+      "url": "https://thedankoe.com/letters/be-a-loser-if-you-want-to-be-happy/",
+      "date": "2025-06-12",
+      "source": "官网文章",
+      "topics": [
+        "学习与思考"
+      ],
+      "access": "public",
+      "zhTitle": "如果你想快乐，试着接受做个“失败者”",
+      "hasGuide": false,
+      "duplicateOf": "7949a44e439f"
+    },
+    {
+      "id": "32dfa60f243a",
+      "title": "why avoiding conflict is ruining your life",
+      "url": "https://letters.thedankoe.com/p/how-to-be-more-disagreeable-create",
+      "date": "2025-06-09",
+      "source": "邮件文章",
+      "topics": [
+        "生活设计"
+      ],
+      "access": "public",
+      "sourceDescription": "how to bend reality in your favor",
+      "zhTitle": "回避冲突为什么正在破坏你的生活",
+      "hasGuide": false,
+      "alternateSources": [
+        {
+          "title": "How To Be More Disagreeable (Create A Reality Distortion Field)",
+          "url": "https://thedankoe.com/letters/how-to-be-more-disagreeable-create-a-reality-distortion-field/"
+        }
+      ]
     },
     {
       "id": "b06e20ac80d1",
@@ -568,7 +779,8 @@
       ],
       "access": "public",
       "zhTitle": "如何更敢于表达不同意见",
-      "hasGuide": false
+      "hasGuide": false,
+      "duplicateOf": "32dfa60f243a"
     },
     {
       "id": "1ec2583f9fcf",
@@ -582,7 +794,13 @@
       "access": "public",
       "sourceDescription": "how to become the main character of your life",
       "zhTitle": "你生来不是为了做游戏里的 NPC",
-      "hasGuide": false
+      "hasGuide": false,
+      "alternateSources": [
+        {
+          "title": "How To Become The Main Character Of Your Life",
+          "url": "https://thedankoe.com/letters/how-to-become-the-main-character-of-your-life/"
+        }
+      ]
     },
     {
       "id": "697e841a0dc1",
@@ -600,13 +818,78 @@
       "hasGuide": false
     },
     {
+      "id": "d8caf5eafa7d",
+      "title": "How Average People Will Get Rich With AI",
+      "url": "https://thedankoe.com/letters/how-average-people-will-get-rich-with-ai/",
+      "date": "2025-05-27",
+      "source": "官网文章",
+      "topics": [
+        "一人公司",
+        "学习与思考",
+        "AI"
+      ],
+      "access": "public",
+      "zhTitle": "普通人如何利用 AI 创造财富",
+      "hasGuide": false
+    },
+    {
+      "id": "f99a8cf8f443",
+      "title": "how smart creators will make money in 2026",
+      "url": "https://letters.thedankoe.com/p/how-smart-creators-will-make-money",
+      "date": "2025-05-22",
+      "source": "邮件文章",
+      "topics": [
+        "一人公司",
+        "写作与内容",
+        "AI"
+      ],
+      "access": "public",
+      "sourceDescription": "the future of digital products",
+      "zhTitle": "聪明的创作者如何在 2026 年赚钱",
+      "hasGuide": false,
+      "alternateSources": [
+        {
+          "title": "How Smart Creators Will Make Money In 2026 (You’re Early)",
+          "url": "https://thedankoe.com/letters/how-smart-creators-will-make-money-in-2026-youre-early/"
+        }
+      ]
+    },
+    {
+      "id": "521f0a06f176",
+      "title": "7 Bad Habits Preventing You From The Life You Want",
+      "url": "https://thedankoe.com/letters/7-bad-habits-preventing-you-from-the-life-you-want/",
+      "date": "2025-05-19",
+      "source": "官网文章",
+      "topics": [
+        "专注与行动",
+        "生活设计"
+      ],
+      "access": "public",
+      "zhTitle": "阻碍你过上理想生活的七个坏习惯",
+      "hasGuide": false
+    },
+    {
+      "id": "a8bd4dd33494",
+      "title": "The 80-Hour Myth (Why We’re Addicted To Being Busy)",
+      "url": "https://thedankoe.com/letters/the-80-hour-myth-why-were-addicted-to-being-busy/",
+      "date": "2025-04-26",
+      "source": "官网文章",
+      "topics": [
+        "生活设计"
+      ],
+      "access": "public",
+      "zhTitle": "每周工作 80 小时的迷思：我们为何沉迷于忙碌",
+      "hasGuide": false
+    },
+    {
       "id": "49ffbf4f19b4",
       "title": "Learn AI To 10x Any Other Skill (Full Beginner Guide)",
       "url": "https://thedankoe.com/letters/learn-ai-to-10x-any-other-skill-full-beginner-guide/",
       "date": "2025-03-15",
       "source": "官网文章",
       "topics": [
-        "学习与思考"
+        "学习与思考",
+        "AI"
       ],
       "access": "public",
       "zhTitle": "AI 入门指南：用它放大其他技能",
@@ -625,11 +908,39 @@
       "access": "public",
       "zhTitle": "如何更快实现远大的目标",
       "hasGuide": false
+    },
+    {
+      "id": "6bc36297f437",
+      "title": "The $1 Million Product: How To Package & Market Your Knowledge",
+      "url": "https://thedankoe.com/letters/the-1-million-product-how-to-package-market-your-knowledge/",
+      "date": "2025-02-01",
+      "source": "官网文章",
+      "topics": [
+        "一人公司",
+        "学习与思考"
+      ],
+      "access": "public",
+      "zhTitle": "价值百万美元的产品：如何包装与营销知识",
+      "hasGuide": false
+    },
+    {
+      "id": "e4de246bf81c",
+      "title": "I Brainwashed Myself Into Being Confident",
+      "url": "https://thedankoe.com/letters/i-brainwashed-myself-into-being-confident/",
+      "date": "2022-02-25",
+      "source": "官网文章",
+      "topics": [
+        "学习与思考",
+        "生活设计"
+      ],
+      "access": "public",
+      "zhTitle": "我如何训练自己变得更自信",
+      "hasGuide": false
     }
   ],
   "stats": {
-    "publicTotal": 242,
-    "translated": 43,
+    "publicTotal": 237,
+    "translated": 60,
     "since": "2021"
   }
 }
