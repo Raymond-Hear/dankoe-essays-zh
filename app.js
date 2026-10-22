@@ -455,6 +455,7 @@ async function initArticle(catalog, contentIndex, editorial, featured, guides) {
   if (editorial[id]?.sourceCoverUrl) sources.push(sourceRow("封面", editorial[id].sourceCoverUrl, "Dan Koe 原文配图"));
   if (media.videoId) sources.push(sourceRow("视频", "https://www.youtube.com/watch?v=" + encodeURIComponent(media.videoId), "YouTube 原视频"));
   if (media.audioUrl) sources.push(sourceRow("音频", media.audioUrl, "The Koe Cast 原始 MP3"));
+  if (media.podcastEpisodeUrl) sources.push(sourceRow("播客节目", media.podcastEpisodeUrl, media.podcastEpisodeTitle || "The Koe Cast 节目页"));
   if (feeds.podcast && media.audioUrl) sources.push(sourceRow("播客 RSS", feeds.podcast, "The Koe Cast 节目源"));
   if (feeds.articles) sources.push(sourceRow("文章 RSS", feeds.articles, "Dan Koe 文章源"));
   if (media.chapterSourceUrl) sources.push(sourceRow("章节时间", media.chapterSourceUrl, "播客章节来源"));
