@@ -2,12 +2,13 @@
   const search = document.querySelector("#archive-search");
   const year = document.querySelector("#archive-year");
   const topic = document.querySelector("#archive-topic");
+  const language = document.querySelector("#archive-language");
   const list = document.querySelector("#archive-list");
   const count = document.querySelector("#archive-count");
   const more = document.querySelector("#archive-more");
   const period = document.querySelector("#archive-period");
   const pageSize = 24;
-  const kinds = { tweet: "帖子", thread: "串帖", article: "长文" };
+  const kinds = { tweet: "帖子", thread: "串帖" };
   const nonText = new Set(["image", "link", "rule", "quoted"]);
   const dateLabel = (date) => `${date.slice(0, 4)} 年 ${Number(date.slice(5, 7))} 月 ${Number(date.slice(8, 10))} 日`;
   const needsTranslation = (text) => /[A-Za-z]/.test(text.replace(/https?:\/\/\S+/g, ""));
@@ -15,6 +16,7 @@
   let entries = [];
   let matches = [];
   let shown = 0;
+  let lang = "zh";
 
   function element(tag, className, text) {
     const node = document.createElement(tag);
@@ -31,53 +33,48 @@
     return link;
   }
 
+  // 只显示当前语言：选中文时中文缺失就标注待补，选英文时原文永远在。
+  function readingText(part) {
+    if (lang === "en") return part.en;
+    return part.zh || (!needsTranslation(part.en) ? part.en : "");
+  }
+
   function renderReading(entry) {
     const content = element("div", "archive-reading");
-    const bilingual = entry.blocks.some((part) => part.zh);
-    const translatable = entry.blocks.some((part) => !nonText.has(part.kind) && needsTranslation(part.en));
-    const heading = element("div", "archive-languages");
-    if (bilingual) {
-      heading.append(element("span", "", "中文"), element("span", "", "English"));
-    } else if (translatable) {
-      heading.append(element("span", "", "英文原文"), element("span", "", "中文翻译待完成"));
-    } else {
-      heading.append(element("span", "", "原帖内容"));
-    }
-    if (bilingual) heading.classList.add("is-bilingual");
-    content.append(heading);
-
     for (const part of entry.blocks) {
       if (part.kind === "image" && part.url.startsWith("https://")) {
         const link = externalLink(part.url, "");
         const image = element("img", "archive-image");
         image.src = part.url;
-        image.alt = "X 原文配图";
+        image.alt = "帖子配图";
         image.loading = "lazy";
         link.append(image);
         content.append(link);
-      } else if (part.kind === "link") {
-        content.append(externalLink(part.url, part.en || "打开原帖附件"));
       } else if (part.kind === "rule") {
         content.append(element("hr", "archive-break"));
       } else if (part.kind === "quoted") {
         content.append(element("p", "archive-quoted", `引用 ${part.en}`));
+      } else if (part.kind === "link") {
+        content.append(element("p", "archive-quoted", part.en));
       } else {
-        const row = element("div", "archive-paragraph");
+        const text = readingText(part);
         const tag = part.kind === "heading" || part.kind === "title" ? "h3" : part.kind === "quote" ? "blockquote" : "p";
         const marker = part.marker ? `${part.marker} ` : part.kind === "bullet" ? "• " : "";
-        if (bilingual) {
-          row.classList.add("is-bilingual");
-          const translated = part.zh || (!needsTranslation(part.en) ? part.en : "");
-          row.append(element(tag, translated ? "" : "archive-pending", translated ? marker + translated : "译文待补充"));
-        }
-        const english = element(tag, "", marker + part.en);
-        english.lang = "en";
-        row.append(english);
+        const row = element("div", "archive-paragraph");
+        const body = text ? element(tag, "", marker + text) : element(tag, "archive-pending", "译文待补充");
+        if (lang === "en") body.lang = "en";
+        row.append(body);
         content.append(row);
       }
     }
-    content.append(externalLink(entry.url, "在 X 查看原文 ↗"));
     return content;
+  }
+
+  function preview(entry) {
+    const first = entry.blocks.find((part) => !nonText.has(part.kind));
+    if (!first) return "查看帖子配图";
+    const text = readingText(first);
+    return text || "译文待补充";
   }
 
   function card(entry) {
@@ -86,13 +83,12 @@
     const meta = element("span", "archive-meta");
     const date = element("time", "", dateLabel(entry.date));
     date.dateTime = entry.date;
-    meta.append(date, element("span", "archive-kind", kinds[entry.kind]));
+    meta.append(date, element("span", "archive-kind", kinds[entry.kind] || "帖子"));
     for (const label of entry.tags) meta.append(element("span", "archive-tag", label));
     summary.append(meta);
-    const first = entry.blocks.find((part) => !nonText.has(part.kind));
-    const preview = element("span", "archive-preview", first?.zh || first?.en || "查看帖子附件");
-    if (first && !first.zh) preview.lang = "en";
-    summary.append(preview);
+    const text = element("span", "archive-preview", preview(entry));
+    if (lang === "en") text.lang = "en";
+    summary.append(text);
     details.append(summary);
     details.addEventListener("toggle", () => {
       if (details.open && details.children.length === 1) details.append(renderReading(entry));
@@ -121,6 +117,14 @@
     for (const value of values) select.add(new Option(value, value));
   }
 
+  function storedLang() {
+    try {
+      return localStorage.getItem("archive-language") === "en" ? "en" : "zh";
+    } catch {
+      return "zh";
+    }
+  }
+
   async function load() {
     try {
       const response = await fetch("data/x-archive.json");
@@ -133,9 +137,20 @@
         const last = entries[entries.length - 1];
         period.textContent = `${dateLabel(last.date)} 至 ${dateLabel(entries[0].date)} · 北京时间`;
       }
+      lang = storedLang();
+      language.value = lang;
       fillOptions(year, new Set(entries.map((entry) => entry.date.slice(0, 4))));
       fillOptions(topic, [...new Set(entries.flatMap((entry) => entry.tags))].sort((a, b) => a.localeCompare(b, "zh-CN")));
       for (const control of [search, year, topic]) control.addEventListener("input", filter);
+      language.addEventListener("change", () => {
+        lang = language.value === "en" ? "en" : "zh";
+        try {
+          localStorage.setItem("archive-language", lang);
+        } catch {
+          /* 无痕模式下不记住选择 */
+        }
+        filter();
+      });
       more.addEventListener("click", showMore);
       filter();
     } catch {

@@ -20,6 +20,22 @@
   ],
   "articles": [
     {
+      "id": "0d100632b454",
+      "title": "The most lucrative AI business to start in 2027",
+      "url": "https://letters.thedankoe.com/p/the-most-lucrative-ai-business-to",
+      "date": "2026-11-03",
+      "source": "邮件文章",
+      "topics": [
+        "一人公司",
+        "学习与思考",
+        "AI"
+      ],
+      "access": "public",
+      "sourceDescription": "A full guide to becoming a one-person creative team",
+      "zhTitle": "2027 年最赚钱的 AI 生意：一个人的创意团队",
+      "hasGuide": false
+    },
+    {
       "id": "62e06a0cb614",
       "title": "Full Course: How To Turn Your Interests Into Profitable a Lifestyle Business",
       "url": "https://letters.thedankoe.com/p/full-course-how-to-turn-your-interests",
@@ -940,7 +956,7 @@
   ],
   "stats": {
     "publicTotal": 239,
-    "translated": 60,
+    "translated": 61,
     "since": "2021"
   }
 }
