@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T10:20:08+00:00",
+  "generatedAt": "2026-11-09T04:33:33+00:00",
   "sources": [
     {
       "name": "Dan Koe 官网文章目录",
@@ -76,7 +76,7 @@
       "access": "public",
       "sourceDescription": "Your interests + social media + AI = modern business",
       "zhTitle": "一个人的生意：在 AI 时代如何创造收入",
-      "hasGuide": true
+      "hasGuide": false
     },
     {
       "id": "d90ffe8534ce",
@@ -178,7 +178,7 @@
         "AI"
       ],
       "access": "public",
-      "sourceDescription": "These 5 skills will determine your future",
+      "sourceDescription": "The 5 ingredients of success",
       "zhTitle": "怎样培养 AI 难以替代的价值",
       "hasGuide": false
     },
@@ -195,7 +195,7 @@
       "access": "public",
       "sourceDescription": "Having multiple interests is not a weakness like people make you believe",
       "zhTitle": "如何把热爱学习变成一个人的事业",
-      "hasGuide": true
+      "hasGuide": false
     },
     {
       "id": "2dc520466c73",
@@ -251,9 +251,9 @@
         "AI"
       ],
       "access": "public",
-      "sourceDescription": "The best way to learn faster, think deeper, and... save humanity",
+      "sourceDescription": "The best way to learn faster, thinking deeper, and... save humanity",
       "zhTitle": "请多写一点真正的文章",
-      "hasGuide": true
+      "hasGuide": false
     },
     {
       "id": "733668ddf169",
@@ -428,7 +428,7 @@
       "access": "public",
       "sourceDescription": "The inner album of greatest hits, and 3 frameworks to practice with",
       "zhTitle": "如何更清楚、更有条理地表达自己",
-      "hasGuide": false
+      "hasGuide": true
     },
     {
       "id": "5acfae3b42ae",
@@ -629,7 +629,7 @@
       ],
       "access": "public",
       "zhTitle": "你需要的不是细分领域，而是自己的视角",
-      "hasGuide": true
+      "hasGuide": false
     },
     {
       "id": "922e74f0e836",
@@ -744,8 +744,8 @@
       ],
       "access": "public",
       "zhTitle": "如果你想快乐，试着接受做个“失败者”",
-      "hasGuide": false,
-      "duplicateOf": "7949a44e439f"
+      "duplicateOf": "7949a44e439f",
+      "hasGuide": false
     },
     {
       "id": "32dfa60f243a",
@@ -779,8 +779,8 @@
       ],
       "access": "public",
       "zhTitle": "如何更敢于表达不同意见",
-      "hasGuide": false,
-      "duplicateOf": "32dfa60f243a"
+      "duplicateOf": "32dfa60f243a",
+      "hasGuide": false
     },
     {
       "id": "1ec2583f9fcf",
@@ -939,7 +939,7 @@
     }
   ],
   "stats": {
-    "publicTotal": 237,
+    "publicTotal": 239,
     "translated": 60,
     "since": "2021"
   }

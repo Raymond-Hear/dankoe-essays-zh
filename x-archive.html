@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="按时间和主题浏览 Dan Koe 的 X 短帖与串帖，逐段对照中英文。">
+  <title>X 帖子归档 · Dan Koe 长文集</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script src="site-ui.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="site-ui.css">
+  <link rel="stylesheet" href="x-archive.css">
+  <script defer src="x-archive.js"></script>
+</head>
+<body data-page="x-archive">
+  <a class="skip-link" href="#archive-results">跳到帖子</a>
+  <header class="site-header">
+    <div class="site-inner">
+      <a class="brand" href="./"><img class="brand-mark" src="favicon.svg" alt="" width="22" height="22">DAN KOE <span>长文集</span></a>
+      <div class="header-actions">
+        <nav class="site-nav" aria-label="主导航">
+          <a href="./#articles">文章</a><a href="x-archive.html" aria-current="page">X 归档</a><a href="books.html">书籍</a><a href="about.html">关于本站</a>
+        </nav>
+        <button class="theme-switch" data-theme-toggle type="button" aria-label="切换到夜间模式"><span class="theme-symbol" aria-hidden="true">☾</span><span class="theme-text">夜间</span></button>
+      </div>
+    </div>
+  </header>
+  <main class="site-main x-archive">
+    <header class="archive-heading">
+      <h1>Dan Koe 的 X 归档</h1>
+      <p id="archive-period"></p>
+    </header>
+    <section aria-label="浏览归档">
+      <div class="archive-controls">
+        <label><span>搜索</span><input id="archive-search" type="search" placeholder="搜索中英文正文" autocomplete="off"></label>
+        <label><span>年份</span><select id="archive-year"><option value="">全部年份</option></select></label>
+        <label><span>主题</span><select id="archive-topic"><option value="">全部主题</option></select></label>
+      </div>
+      <div id="archive-results" tabindex="-1">
+        <p id="archive-count" role="status">正在加载归档…</p>
+        <div id="archive-list"></div>
+        <button id="archive-more" type="button" hidden>显示更多</button>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p><strong>Dan Koe 长文集</strong><span>独立整理 · 与 Dan Koe 无官方关联</span></p>
+      <nav aria-label="页脚导航"><a href="./#articles">文章列表</a><a href="books.html">书籍</a><a href="about.html">关于本站</a><a href="about.html#sources">版权说明</a></nav>
+    </div>
+  </footer>
+</body>
+</html>
